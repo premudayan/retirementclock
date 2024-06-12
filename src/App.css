@@ -1,0 +1,94 @@
+/* src/App.css */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #0d1b2a; /* Background color for the app */
+  color: #ffffff; /* Default text color */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.config-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+input[type="text"], input[type="date"] {
+  font-size: 1rem;
+  padding: 5px;
+  margin: 10px;
+  background-color: #3e98c7;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #3e98c7;
+  border: none;
+  color: black; /* Default text color for the button */
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #3571a7;
+  color: white; /* Text color on hover */
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.countdown-item {
+  flex: 1;
+  text-align: center;
+  margin: 0 20px;
+}
+
+.countdown-item div {
+  margin-top: 10px;
+  font-size: 2.5rem; /* Larger font size for the labels */
+}
+
+label {
+  font-size: 1rem;
+  color: #ffffff; /* Label text color */
+}
+
+input, button {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type="text"], input[type="date"] {
+  width: 200px;
+  margin-left: 10px; /* Align input fields horizontally */
+}
+
+input[type="date"] {
+  padding-right: 5px; /* Adjust padding for date input */
+}
