@@ -33,51 +33,73 @@ body, html, #root {
   color: #ffffff;
 }
 
-input[type="text"], input[type="date"] {
-  font-size: 1.2rem;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #3e98c7;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
+.input-container {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   width: 100%;
+  max-width: 400px; /* Max width to ensure responsiveness */
+  margin: 0 auto;
 }
 
-button {
-  font-size: 1.5rem;
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #3e98c7;
+  color: #ffffff;
+}
+
+.save-button {
+  width: 100%;
   padding: 15px 20px;
+  font-size: 1.5rem;
   cursor: pointer;
   background-color: #3e98c7;
   border: none;
   color: black;
   border-radius: 5px;
-  width: 100%;
   transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover {
+.save-button:hover {
   background-color: #3571a7;
   color: white;
 }
 
+/* Countdown container styles */
 .countdown-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px; /* Adjust max width for better responsiveness */
   margin: 0 auto;
   padding: 20px;
-  gap: 20px;
+  gap: 20px; /* Add gap between items */
 }
 
 .countdown-item {
   flex: 1;
   text-align: center;
   margin: 10px;
-  min-width: 80px;
+  min-width: 100px; /* Ensure a minimum width for small screens */
+  max-width: 150px; /* Set max-width to ensure items don't stretch too much */
 }
 
 .countdown-item div {
@@ -90,41 +112,34 @@ label {
   color: #ffffff;
 }
 
-@media (max-width: 1200px) {
-  .countdown-item div {
-    font-size: 1.8rem;
-  }
-}
-
+/* Media query for medium screens */
 @media (max-width: 768px) {
   .countdown-container {
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
   }
   .countdown-item {
-    flex: 1 1 45%;
+    flex: 1 1 calc(50% - 40px); /* Adjust width for small screens, 2 columns */
   }
   .countdown-item div {
     font-size: 1.6rem;
   }
-  button {
+  .save-button, .input-field {
     font-size: 1.2rem;
-  }
-  input[type="text"], input[type="date"] {
-    font-size: 1rem;
   }
 }
 
+/* Media query for small screens */
 @media (max-width: 480px) {
+  .countdown-container {
+    flex-direction: column; /* Stack items vertically on very small screens */
+  }
   .countdown-item {
-    flex: 1 1 100%;
+    flex: 1 1 100%; /* Make each item full width on very small screens */
   }
   .countdown-item div {
     font-size: 1.4rem;
   }
-  button {
+  .save-button, .input-field {
     font-size: 1rem;
-  }
-  input[type="text"], input[type="date"] {
-    font-size: 0.9rem;
   }
 }

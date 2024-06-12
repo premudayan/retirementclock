@@ -35,48 +35,47 @@ const DateInput = ({ defaultDate, defaultHeading, defaultImage, onDateSet, onHea
       setCookie('countdownHeading', heading, { path: '/' });
       onHeadingSet(heading);
     }
-    if (image) {
-      setCookie('backgroundImage', image, { path: '/' });
-      onImageSet(image);
-    }
+    // Save the image URL even if it's empty
+    setCookie('backgroundImage', image, { path: '/' });
+    onImageSet(image);
     onSaveComplete(); // Switch back to the main screen
   };
 
   return (
-    <div style={{ textAlign: 'left', margin: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
-      <div style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', width: '100%' }}>
-        <label htmlFor="heading" style={{ flexBasis: '30%', fontSize: '1.5rem', color: '#fff' }}>Enter Heading:</label>
+    <div className="input-container">
+      <div className="input-group">
+        <label htmlFor="heading" className="input-label">Enter Heading:</label>
         <input 
           id="heading"
           type="text" 
           placeholder="Enter heading" 
           value={heading} 
           onChange={handleHeadingChange} 
-          style={{ flex: '1', padding: '10px', fontSize: '1.2rem' }}
+          className="input-field"
         />
       </div>
-      <div style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', width: '100%' }}>
-        <label htmlFor="date" style={{ flexBasis: '30%', fontSize: '1.5rem', color: '#fff' }}>Enter Target Date:</label>
+      <div className="input-group">
+        <label htmlFor="date" className="input-label">Enter Target Date:</label>
         <input 
           id="date"
           type="date" 
           value={date} 
           onChange={handleDateChange} 
-          style={{ flex: '1', padding: '10px', fontSize: '1.2rem' }}
+          className="input-field"
         />
       </div>
-      <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', width: '100%' }}>
-        <label htmlFor="image" style={{ flexBasis: '30%', fontSize: '1.5rem', color: '#fff' }}>Enter Image URL:</label>
+      <div className="input-group">
+        <label htmlFor="image" className="input-label">Enter Image URL:</label>
         <input 
           id="image"
           type="text" 
           placeholder="Enter image URL" 
           value={image} 
           onChange={handleImageChange} 
-          style={{ flex: '1', padding: '10px', fontSize: '1.2rem' }}
+          className="input-field"
         />
       </div>
-      <button onClick={handleSave} style={{ padding: '15px 20px', fontSize: '1.5rem', color: 'black', backgroundColor: '#3e98c7', border: 'none', borderRadius: '5px', width: '100%' }}>
+      <button onClick={handleSave} className="save-button">
         Save
       </button>
     </div>

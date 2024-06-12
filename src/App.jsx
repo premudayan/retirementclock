@@ -10,7 +10,8 @@ const App = () => {
   const [cookies] = useCookies(['retirementDate', 'countdownHeading', 'backgroundImage']);
   const [retirementDate, setRetirementDate] = useState(cookies.retirementDate || '');
   const [countdownHeading, setCountdownHeading] = useState(cookies.countdownHeading || 'My Countdown Clock');
-  const [backgroundImage, setBackgroundImage] = useState(cookies.backgroundImage || '');
+  const defaultImageUrl = 'https://rockcrestfinancial.com/wp-content/uploads/2020/03/Add-Beach-Background-To-Photo-Desktop-Wallpapers-1024x578.jpg';
+  const [backgroundImage, setBackgroundImage] = useState(cookies.backgroundImage !== undefined ? cookies.backgroundImage : defaultImageUrl);
   const [showDateInput, setShowDateInput] = useState(!retirementDate);
 
   useEffect(() => {
@@ -27,8 +28,10 @@ const App = () => {
     setShowDateInput(false);
   };
 
+  const currentBackgroundImage = backgroundImage ? backgroundImage : defaultImageUrl;
+
   return (
-    <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="App" style={{ backgroundImage: `url(${currentBackgroundImage})` }}>
       <div className="config-icon" onClick={handleConfigClick}>
         <FaCog />
       </div>
@@ -36,7 +39,7 @@ const App = () => {
         <DateInput 
           defaultDate={cookies.retirementDate} 
           defaultHeading={cookies.countdownHeading}
-          defaultImage={cookies.backgroundImage}
+          defaultImage={cookies.backgroundImage !== undefined ? cookies.backgroundImage : defaultImageUrl}
           onDateSet={(date) => setRetirementDate(date)} 
           onHeadingSet={(heading) => setCountdownHeading(heading)}
           onImageSet={(image) => setBackgroundImage(image)}
