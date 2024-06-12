@@ -5,7 +5,7 @@ body, html, #root {
   height: 100%;
   width: 100%;
   font-family: Arial, sans-serif;
-  background-color: #0d1b2a; /* Background color for the app */
+  background-color: #0d1b2a; /* Fallback background color */
   color: #ffffff; /* Default text color */
 }
 
@@ -16,7 +16,12 @@ body, html, #root {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  padding: 20px; /* Add padding for small screens */
+  padding: 20px;
+  background-size: contain; /* Ensure the background image fits within the viewport */
+  background-repeat: no-repeat; /* Prevent tiling of the image */
+  background-position: center; /* Center the image */
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay to improve text visibility */
+  background-blend-mode: overlay;
 }
 
 .config-icon {
@@ -29,97 +34,97 @@ body, html, #root {
 }
 
 input[type="text"], input[type="date"] {
-  font-size: 1.2rem; /* Increased font size for input fields */
-  padding: 10px; /* Increase padding for better touch support */
-  margin: 10px 0; /* Adjust margin for spacing */
+  font-size: 1.2rem;
+  padding: 10px;
+  margin: 10px 0;
   background-color: #3e98c7;
   color: #ffffff;
   border: none;
   border-radius: 5px;
-  width: 100%; /* Make input fields take full width on small screens */
+  width: 100%;
 }
 
 button {
-  font-size: 1.5rem; /* Increased font size for button text */
-  padding: 15px 20px; /* Increase padding for touch devices */
+  font-size: 1.5rem;
+  padding: 15px 20px;
   cursor: pointer;
   background-color: #3e98c7;
   border: none;
-  color: black; /* Default text color for the button */
+  color: black;
   border-radius: 5px;
-  width: 100%; /* Make button take full width on small screens */
+  width: 100%;
   transition: background-color 0.3s, color 0.3s;
 }
 
 button:hover {
   background-color: #3571a7;
-  color: white; /* Text color on hover */
+  color: white;
 }
 
 .countdown-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: nowrap; /* Ensure items stay in one line on larger screens */
+  flex-wrap: nowrap;
   width: 100%;
-  max-width: 1400px; /* Adjust max width for better responsiveness */
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
-  gap: 20px; /* Add gap between items */
+  gap: 20px;
 }
 
 .countdown-item {
   flex: 1;
   text-align: center;
   margin: 10px;
-  min-width: 80px; /* Ensure a minimum width for small screens */
+  min-width: 80px;
 }
 
 .countdown-item div {
   margin-top: 10px;
-  font-size: 2rem; /* Larger font size for the countdown labels */
+  font-size: 2rem;
 }
 
 label {
-  font-size: 1.5rem; /* Increased font size for labels */
+  font-size: 1.5rem;
   color: #ffffff;
 }
 
 @media (max-width: 1200px) {
   .countdown-item div {
-    font-size: 1.8rem; /* Adjust font size for medium screens */
+    font-size: 1.8rem;
   }
 }
 
 @media (max-width: 768px) {
   .countdown-container {
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    flex-wrap: wrap;
   }
   .countdown-item {
-    flex: 1 1 45%; /* Adjust width for small screens */
+    flex: 1 1 45%;
   }
   .countdown-item div {
-    font-size: 1.6rem; /* Adjust font size for small screens */
+    font-size: 1.6rem;
   }
   button {
-    font-size: 1.2rem; /* Reduce font size for buttons on smaller screens */
+    font-size: 1.2rem;
   }
   input[type="text"], input[type="date"] {
-    font-size: 1rem; /* Adjust font size for inputs */
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .countdown-item {
-    flex: 1 1 100%; /* Make each item full width on very small screens */
+    flex: 1 1 100%;
   }
   .countdown-item div {
-    font-size: 1.4rem; /* Further reduce font size */
+    font-size: 1.4rem;
   }
   button {
-    font-size: 1rem; /* Further reduce font size for buttons */
+    font-size: 1rem;
   }
   input[type="text"], input[type="date"] {
-    font-size: 0.9rem; /* Further adjust font size for inputs */
+    font-size: 0.9rem;
   }
 }

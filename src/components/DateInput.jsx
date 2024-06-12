@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 
-const DateInput = ({ defaultDate, defaultHeading, onDateSet, onHeadingSet, onSaveComplete }) => {
+const DateInput = ({ defaultDate, defaultHeading, defaultImage, onDateSet, onHeadingSet, onImageSet, onSaveComplete }) => {
   const [date, setDate] = useState(defaultDate || '');
   const [heading, setHeading] = useState(defaultHeading || '');
-  const [cookies, setCookie] = useCookies(['retirementDate', 'countdownHeading']);
+  const [image, setImage] = useState(defaultImage || '');
+  const [cookies, setCookie] = useCookies(['retirementDate', 'countdownHeading', 'backgroundImage']);
 
   useEffect(() => {
     setDate(defaultDate);
     setHeading(defaultHeading);
-  }, [defaultDate, defaultHeading]);
+    setImage(defaultImage);
+  }, [defaultDate, defaultHeading, defaultImage]);
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
@@ -18,6 +20,10 @@ const DateInput = ({ defaultDate, defaultHeading, onDateSet, onHeadingSet, onSav
 
   const handleHeadingChange = (e) => {
     setHeading(e.target.value);
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
   };
 
   const handleSave = () => {
@@ -28,6 +34,10 @@ const DateInput = ({ defaultDate, defaultHeading, onDateSet, onHeadingSet, onSav
     if (heading) {
       setCookie('countdownHeading', heading, { path: '/' });
       onHeadingSet(heading);
+    }
+    if (image) {
+      setCookie('backgroundImage', image, { path: '/' });
+      onImageSet(image);
     }
     onSaveComplete(); // Switch back to the main screen
   };
@@ -45,13 +55,24 @@ const DateInput = ({ defaultDate, defaultHeading, onDateSet, onHeadingSet, onSav
           style={{ flex: '1', padding: '10px', fontSize: '1.2rem' }}
         />
       </div>
-      <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', width: '100%' }}>
+      <div style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', width: '100%' }}>
         <label htmlFor="date" style={{ flexBasis: '30%', fontSize: '1.5rem', color: '#fff' }}>Enter Target Date:</label>
         <input 
           id="date"
           type="date" 
           value={date} 
           onChange={handleDateChange} 
+          style={{ flex: '1', padding: '10px', fontSize: '1.2rem' }}
+        />
+      </div>
+      <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', width: '100%' }}>
+        <label htmlFor="image" style={{ flexBasis: '30%', fontSize: '1.5rem', color: '#fff' }}>Enter Image URL:</label>
+        <input 
+          id="image"
+          type="text" 
+          placeholder="Enter image URL" 
+          value={image} 
+          onChange={handleImageChange} 
           style={{ flex: '1', padding: '10px', fontSize: '1.2rem' }}
         />
       </div>

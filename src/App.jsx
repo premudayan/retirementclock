@@ -7,9 +7,10 @@ import { FaCog } from 'react-icons/fa';
 import './App.css';
 
 const App = () => {
-  const [cookies] = useCookies(['retirementDate', 'countdownHeading']);
+  const [cookies] = useCookies(['retirementDate', 'countdownHeading', 'backgroundImage']);
   const [retirementDate, setRetirementDate] = useState(cookies.retirementDate || '');
   const [countdownHeading, setCountdownHeading] = useState(cookies.countdownHeading || 'My Countdown Clock');
+  const [backgroundImage, setBackgroundImage] = useState(cookies.backgroundImage || '');
   const [showDateInput, setShowDateInput] = useState(!retirementDate);
 
   useEffect(() => {
@@ -27,16 +28,18 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="config-icon" onClick={handleConfigClick}>
         <FaCog />
       </div>
       {showDateInput ? (
         <DateInput 
           defaultDate={cookies.retirementDate} 
-          defaultHeading={cookies.countdownHeading} 
+          defaultHeading={cookies.countdownHeading}
+          defaultImage={cookies.backgroundImage}
           onDateSet={(date) => setRetirementDate(date)} 
           onHeadingSet={(heading) => setCountdownHeading(heading)}
+          onImageSet={(image) => setBackgroundImage(image)}
           onSaveComplete={handleSaveComplete}
         />
       ) : (
